@@ -17,7 +17,7 @@ session_start();
   
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
-            <a href="#" class="navbar-brand">
+            <a href="index.php" class="navbar-brand">
                 <img src="img/bidworkersnall.png" alt="logo" width="150" height="33"
                  class="d-inline-block"/><span class="hidden">logo</span>
             </a>

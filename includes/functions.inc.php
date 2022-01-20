@@ -133,4 +133,33 @@ function loginUser($conn, $username, $pwd){
     }
 }
 
+function createJob($conn, $jobDescription, $jobTypeSelection, $jobPrice) {
+    $sql = "INSERT INTO jobs (jobDescription, jobType, jobPrice) VALUES (?,?,?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../signup.php?error=stmtfailed");
+        exit();
+
+    }
+    mysqli_stmt_bind_param($stmt, "ssi",$jobDescription, $jobTypeSelection, $jobPrice);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    header("location: ../work.php?error=none");
+    exit();
+}
+
+
+function emptyInputJobPost($jobTypeSelection, $jobDescription, $jobPrice) {
+    $result;
+    if(empty($jobTypeSelection)||empty($jobDescription)||empty($jobPrice)){
+        $result= true;
+
+    }
+    else{
+        $result= false;
+    }
+    return $result;
+}
+
 
